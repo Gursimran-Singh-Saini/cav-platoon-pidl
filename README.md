@@ -59,8 +59,11 @@ Predicted follower acceleration across the headway distance domain ($h \in [5, 6
 ![PIDL Generalization](pidl_generalization.png)
 
 ### 4. Intent-Sharing CACC Simulation Environment Dynamics
-Closed-loop verification of the 2-vehicle I-CACC simulation module (`icacc_env_validation.py`) under a dynamic lead-vehicle deceleration profile. The follower tracks the target speed smoothly while bounding spacing error $e_e(t) \in [-0.025, 0.16]\text{ m}$ and restabilizing the multi-objective reward toward $+1.0$.
+Closed-loop kinematic verification of the 2-vehicle I-CACC simulation module (`icacc_env.py`) under a dynamic lead-vehicle deceleration profile. The follower tracks the target speed smoothly while bounding spacing error $e_e(t) \in [-0.025, +0.16]\text{ m}$ and restabilizing the multi-objective step reward toward $+1.0$.
 
 ![I-CACC Environment Validation](icacc_env_validation.png)
 
+### 5. TD3 Reinforcement Learning Controller Convergence & Benchmark
+Closed-loop evaluation of the trained Twin Delayed DDPG (TD3) Actor-Critic policy operating within `icacc_env.py`. Over 80 training episodes, the policy transitions from initial exploration penalties to a convergent mean step reward of $+0.58$ to $+0.65$. Evaluated under deterministic execution across a sudden lead braking profile ($20\text{ m/s} \rightarrow 12\text{ m/s}$), the ego policy smoothly matches the lead cruising speed without engine cut-off, restricts transient gap error to $[-1.75, +0.58]\text{ m}$, and restabilizes steady-state headway error to $-0.05\text{ m}$.
 
+![TD3 Benchmark](td3_icacc_benchmark.png)
