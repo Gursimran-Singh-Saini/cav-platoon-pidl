@@ -58,13 +58,9 @@ Predicted follower acceleration across the headway distance domain ($h \in [5, 6
 
 ![PIDL Generalization](pidl_generalization.png)
 
-## Repository Structure
+### 4. Intent-Sharing CACC Simulation Environment Dynamics
+Closed-loop verification of the 2-vehicle I-CACC simulation module (`icacc_env_validation.py`) under a dynamic lead-vehicle deceleration profile. The follower tracks the target speed smoothly while bounding spacing error $e_e(t) \in [-0.025, 0.16]\text{ m}$ and restabilizing the multi-objective reward toward $+1.0$.
 
-```text
-cav-platoon-pidl/
-│
-├── README.md               # Architecture documentation, math formulation & results
-├── baseline_idm.py         # Classical IDM car-following simulation engine
-├── pidl_model.py           # PUNN PyTorch architecture & hybrid physics loss module
-├── train_pidl.py           # Training pipeline, collocation sampler, and evaluation visualizer
-└── requirements.txt        # Python dependencies (torch, numpy, matplotlib)
+![I-CACC Environment Validation](icacc_env_validation.png)
+
+
